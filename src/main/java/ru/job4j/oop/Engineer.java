@@ -4,9 +4,8 @@ public class Engineer extends Profession {
     private int physicsSkill;
     private int mathsSkill;
 
-    public Engineer(){}
-
-    public Engineer(int physicsSkill, int mathsSkill) {
+    public Engineer(String name, String surname, String education, String birthday, int physicsSkill, int mathsSkill) {
+        super(name, surname, education, birthday);
         this.physicsSkill = physicsSkill;
         this.mathsSkill = mathsSkill;
     }
