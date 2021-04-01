@@ -19,13 +19,13 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         Item[] itemsByName = new Item[size];
-        int size = 0;
-        for (Item item : items) {
-            if (item.getName().equals(key)) {
-                itemsByName[size++] = item;
+        int arraySize = 0;
+        for (int i = 0; i < size; i++) {
+            if (items[i].getName().equals(key)) {
+               itemsByName[arraySize++] = items[i];
             }
         }
-        return Arrays.copyOf(itemsByName, size);
+        return Arrays.copyOf(itemsByName, arraySize);
     }
 
     public Item findById(int id) {
