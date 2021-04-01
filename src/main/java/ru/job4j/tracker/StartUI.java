@@ -12,5 +12,6 @@ public class StartUI {
         tracker.add(new Item("Task number 1"));
         Item item1 = tracker.findById(1);
         System.out.println("ItemId: " + item1.getId() + ". ItemName: " + item1.getName());
+        System.out.println(item1.toString());
     }
 }
