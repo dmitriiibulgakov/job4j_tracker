@@ -18,10 +18,10 @@ public class StartUI {
 
     public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
-        String id = input.askStr("Enter item's id: ");
+        int id = input.askInt("Enter item's id: ");
         String name = input.askStr("Enter new name: ");
         Item item = new Item(name);
-        if (tracker.replace(Integer.parseInt(id), item)) {
+        if (tracker.replace(id, item)) {
             System.out.println("Completed successfully");
         } else {
             System.out.println("Something went wrong");
@@ -30,8 +30,8 @@ public class StartUI {
 
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ====");
-        String id = input.askStr("Enter item's id: ");
-        if (tracker.delete(Integer.parseInt(id))) {
+        int id = input.askInt("Enter item's id: ");
+        if (tracker.delete(id)) {
             System.out.println("Completed successfully");
         } else {
             System.out.println("Something went wrong");
@@ -40,8 +40,8 @@ public class StartUI {
 
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
-        String id = input.askStr("Enter item's id: ");
-        Item item = tracker.findById(Integer.parseInt(id));
+        int id = input.askInt("Enter item's id: ");
+        Item item = tracker.findById(id);
         if (item == null) {
             System.out.println("Заявка с таким id не найдена");
         } else {
