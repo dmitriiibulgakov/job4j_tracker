@@ -12,7 +12,7 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        return user.isValid();
+        return user != null && user.isValid() && user.getUsername().length() > 2;
     }
 
     public static void main(String[] args) {
