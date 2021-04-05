@@ -15,6 +15,6 @@ public class User {
     }
 
     public boolean isValid() {
-        return username != null && username.length() > 2;
+        return username != null && valid && username.length() > 2;
     }
 }
