@@ -12,7 +12,10 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        return user != null && user.isValid() && user.getUsername().length() > 2;
+        if (!user.isValid() || user.getUsername().length() < 3) {
+            throw new UserInvalidException("User isn't valid");
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -23,8 +26,6 @@ public class UserStore {
             User user = findUser(users, "Petr Arsentev");
             if (validate(user)) {
                 System.out.println("This user has an access");
-            } else {
-                throw new UserInvalidException("User isn't valid");
             }
         } catch (UserInvalidException ie) {
             ie.printStackTrace();
