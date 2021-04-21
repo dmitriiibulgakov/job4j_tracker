@@ -9,9 +9,13 @@ public class College {
         student.setGroup("A-47");
         student.setAcceptedDate(LocalDateTime.now());
 
-        System.out.println("Student: " + student.getFio() + System.lineSeparator() +
-                "Group: " + student.getGroup() + System.lineSeparator() +
-                "AcceptedDate: " + student.getAcceptedDate());
-
+        System.out.println("Student: "
+                + student.getFio()
+                + System.lineSeparator()
+                + "Group: "
+                + student.getGroup()
+                + System.lineSeparator()
+                + "AcceptedDate: "
+                + student.getAcceptedDate());
     }
 }

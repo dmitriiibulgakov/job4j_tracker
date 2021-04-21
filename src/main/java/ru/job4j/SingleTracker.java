@@ -9,7 +9,9 @@ public final class SingleTracker {
     private static SingleTracker instance;
     private final Tracker tracker = new Tracker();
 
-    private SingleTracker(){}
+    private SingleTracker() {
+
+    }
 
     public static SingleTracker getInstance() {
         if (instance == null) {

@@ -24,7 +24,7 @@ public class StartUI {
         }
     }
 
-    private void showMenu(List <UserAction> actions) {
+    private void showMenu(List<UserAction> actions) {
         int index = -1;
         out.println("Menu.");
         for (UserAction action: actions) {
@@ -36,7 +36,7 @@ public class StartUI {
         Output consoleOutput = new ConsoleOutput();
         Input input = new ValidateInput(consoleOutput, new ConsoleInput());
         Tracker tracker = new Tracker();
-        List <UserAction> actions = new ArrayList<>();
+        List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(consoleOutput));
         actions.add(new CreateAction(consoleOutput));
         actions.add(new ShowAllAction(consoleOutput));

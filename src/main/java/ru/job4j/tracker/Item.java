@@ -7,7 +7,7 @@ public class Item {
     private String name;
     private LocalDateTime created = LocalDateTime.now();
 
-    public Item(){
+    public Item() {
     }
 
     public Item(String name) {
@@ -41,10 +41,14 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", created=" + created +
-                '}';
+        return "Item{"
+                + "id="
+                + id
+                + ", name='"
+                + name
+                + '\''
+                + ", created="
+                + created
+                + '}';
     }
 }
