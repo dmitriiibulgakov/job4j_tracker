@@ -5,13 +5,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс описывает главный сервис банка
+ * @author DMITRIY BULGAKOV
+ * @version 1.0
+ */
 public class BankService {
+    /**
+     * Хранение всех пользователей осуществляется в коллекции HashMap
+     */
     private Map<User, List<Account>> users = new HashMap<>();
 
+    /**
+     * Добавляет нового пользователя в систему банка
+     * @param user - пользователь банка
+     */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
     }
 
+    /**
+     * Добавляет новый счёт пользователю банка
+     * @param passport - номер паспорта пользователя банка
+     * @param account  - добавляемый счёт
+     */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -22,6 +39,11 @@ public class BankService {
         }
     }
 
+    /**
+     * Находит пользователя по паспорту
+     * @param passport - номер паспорта пользователя банка
+     * @return возвращает найденного пользователя банка
+     */
     public User findByPassport(String passport) {
         for (User user: users.keySet()) {
             if (user.getPassport().equals(passport)) {
@@ -31,6 +53,12 @@ public class BankService {
         return null;
     }
 
+    /**
+     * Ищет по реквизитам счёт пользователя
+     * @param passport - номер паспорта
+     * @param requisite - реквизиты счёта
+     * @return возвращает найденный счёт
+     */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -46,6 +74,15 @@ public class BankService {
         return null;
     }
 
+    /**
+     * Перечисляет деньги с одного счёта на другой
+     * @param srcPassport - номер паспорта плательщика
+     * @param srcRequisite - реквизиты счёта плательщика
+     * @param destPassport - номер паспорта получателя
+     * @param destRequisite - реквизиты счёта получателя
+     * @param amount - перечисляемая сумм
+     * @return возвращает true, если деньги были перечислены, иначе false
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
@@ -56,16 +93,5 @@ public class BankService {
             return true;
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
-        bank.addUser(user);
-        bank.addAccount(user.getPassport(), new Account("5546", 1500));
-        Account account = bank.findByRequisite("3434", "5546");
-        System.out.println(account.getRequisite());
-//        System.out.println(bank.findByRequisite("3434", "5546").getBalance());
-      //  assertThat(bank.findByRequisite("3434", "5546").getBalance(), is(150D));
     }
 }
