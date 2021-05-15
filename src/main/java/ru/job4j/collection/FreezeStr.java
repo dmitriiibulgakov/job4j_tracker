@@ -5,18 +5,24 @@ import java.util.Map;
 
 public class FreezeStr {
     public static boolean eq(String left, String right) {
-        Map<Character, Integer> leftMap = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>();
         for (Character letter: left.toCharArray()) {
-            leftMap.computeIfPresent(letter, (k, v) -> v + 1);
-            leftMap.putIfAbsent(letter, 0);
+            map.computeIfPresent(letter, (k, v) -> v + 1);
+            map.putIfAbsent(letter, 1);
         }
 
-        Map<Character, Integer> rightMap = new HashMap<>();
-        for (Character letter: right.toCharArray()) {
-            rightMap.computeIfPresent(letter, (k, v) -> v + 1);
-            rightMap.putIfAbsent(letter, 0);
+        for (Character chr: right.toCharArray()) {
+            if (map.containsKey(chr)) {
+                int val = map.get(chr);
+                if (val == 1) {
+                    map.remove(chr);
+                } else {
+                    map.put(chr, val - 1);
+                }
+            } else {
+                return false;
+            }
         }
-
-        return leftMap.equals(rightMap);
+        return map.isEmpty();
     }
 }
