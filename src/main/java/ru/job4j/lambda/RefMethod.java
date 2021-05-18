@@ -2,7 +2,6 @@ package ru.job4j.lambda;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class RefMethod {
     public static void main(String[] args) {
@@ -10,8 +9,7 @@ public class RefMethod {
                 "Ivan",
                 "Petr Arsentev"
         );
-        Consumer<String> out = RefMethod::cutOut;
-        names.forEach(out);
+        names.forEach(RefMethod::cutOut);
     }
 
     public static void cutOut(String value) {
