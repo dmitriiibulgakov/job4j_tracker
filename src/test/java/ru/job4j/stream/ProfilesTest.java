@@ -19,8 +19,8 @@ public class ProfilesTest {
         Profiles pr = new Profiles();
         List<Address> rsl = pr.collect(profileList);
         List<Address> expected = new ArrayList<>();
-        expected.add(new Address("London", "Queen street", 10, 4));
         expected.add(new Address("", "Arbat street", 14, 5));
+        expected.add(new Address("London", "Queen street", 10, 4));
         assertThat(rsl, is(expected));
     }
 
@@ -46,6 +46,24 @@ public class ProfilesTest {
         Profiles pr = new Profiles();
         List<Address> rsl = pr.collect(profileList);
         List<Address> expected = new ArrayList<>();
+        assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void whenCollect5profilesWithDuplicates() {
+        List<Profile> profileList = List.of(
+                new Profile(new Address("Tokyo", "Yakuza street", 1, 3)),
+                new Profile(new Address("London", "Queen street", 10, 4)),
+                new Profile(new Address("Tokyo", "Yakuza street", 1, 3)),
+                new Profile(new Address("Moscow", "Arbat street", 14, 5)),
+                new Profile(new Address("London", "Queen street", 10, 4))
+        );
+        Profiles pr = new Profiles();
+        List<Address> rsl = pr.collect(profileList);
+        List<Address> expected = new ArrayList<>();
+        expected.add(new Address("London", "Queen street", 10, 4));
+        expected.add(new Address("Moscow", "Arbat street", 14, 5));
+        expected.add(new Address("Tokyo", "Yakuza street", 1, 3));
         assertThat(rsl, is(expected));
     }
 }
