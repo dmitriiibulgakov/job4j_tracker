@@ -24,7 +24,7 @@ public class PhoneDictionary {
                 .or(surnameContainsKey)
                 .or(nameContainsKey)
                 .test(person);
-        ArrayList<Person> result = new ArrayList<>();
+        var result = new ArrayList<Person>();
         for (Person person : persons) {
             if (combine.test(person)) {
                 result.add(person);
