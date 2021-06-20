@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Profiles {
-    public List<Address> collect(List<Profile> profiles){
+    public List<Address> collect(List<Profile> profiles) {
         Comparator<Address> comparator = (Comparator.comparing(Address::getCity));
         return profiles.stream()
                 .map(Profile::getAddress)

@@ -52,13 +52,19 @@ public class AtmModel {
 
     @Override
     public String toString() {
-        return "AtmModel{" +
-                "name='" + name + '\'' +
-                ", moneyReceiving=" + moneyReceiving +
-                ", height=" + height +
-                ", width=" + width +
-                ", numberOfCassettes=" + numberOfCassettes +
-                '}';
+        return "AtmModel{"
+                + "name='"
+                + name
+                + '\''
+                + ", moneyReceiving="
+                + moneyReceiving
+                + ", height="
+                + height
+                + ", width="
+                + width
+                + ", numberOfCassettes="
+                + numberOfCassettes
+                + '}';
     }
 
     public static void main(String[] args) {
